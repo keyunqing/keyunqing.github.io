@@ -32,6 +32,37 @@ npm start            # 启动桌面应用
 npm run web          # 然后访问 http://localhost:5173
 ```
 
+## 部署到 GitHub Pages
+
+这个目录已经可以直接发布到 GitHub Pages，不需要额外打包。
+
+仓库根目录下的 [.github/workflows/deploy-soundpath.yml](.github/workflows/deploy-soundpath.yml) 会在推送 `master` 时自动把 `soundpath/` 发布到 Pages。
+
+需要在 GitHub 仓库设置中确认两项：
+
+1. `Settings -> Pages -> Source` 选择 `GitHub Actions`
+2. `Settings -> Pages -> Custom domain` 填写 `ikesman.app`，并开启 `Enforce HTTPS`
+
+当前发布产物会自动包含 `CNAME` 文件，因此后续重新部署不会丢失自定义域名。
+
+如果域名服务商不支持根域名 CNAME，请给 `ikesman.app` 配置 GitHub Pages 的 A 记录：
+
+```text
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+可选再补充 4 条 AAAA 记录：
+
+```text
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
 ## 常用脚本
 
 | 命令 | 说明 |
